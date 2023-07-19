@@ -1,0 +1,6 @@
+.env
+sseapi/tmp/build-errors.log
+sseapi/tmp/main
+**/node_modules
+**/tmp
+*zip

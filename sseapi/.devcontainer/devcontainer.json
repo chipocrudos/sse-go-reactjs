@@ -1,0 +1,35 @@
+{
+	"name": "golang SEE server",
+
+	"dockerComposeFile": "docker-compose.extend.yaml",
+
+	"service": "server",
+
+	"workspaceFolder": "/workspace",
+
+	"forwardPorts": [8000],
+
+	"shutdownAction": "stopCompose",
+	
+	"remoteEnv": { 
+		"CORS": "http://localhost:8000,http://localhost:5173",
+		"APPIDS": "SUPERSECRET"
+	},
+
+	"postCreateCommand": "go install github.com/cosmtrek/air@latest",
+	
+	"postStartCommand": "air",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"mutantdino.resourcemonitor",
+				"rangav.vscode-thunder-client"
+			]
+		}
+	},
+	"overrideCommand": true,
+	"remoteUser": "root"
+
+}

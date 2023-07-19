@@ -1,0 +1,47 @@
+{
+	"name": "Reactjs uix client",
+
+	"dockerComposeFile": "docker-compose.extend.yaml",
+
+	"service": "uix",
+	"workspaceFolder": "/workspace",
+	"forwardPorts": [5173],
+
+	"shutdownAction": "stopCompose",
+
+	"remoteEnv": { 
+		"VITE_SERVERAPI": "http://localhost:8000",
+		"VITE_APPID": "SUPERSECRET"
+	},
+
+	"postStartCommand": "yarn dev --host 0.0.0.0",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"mutantdino.resourcemonitor",
+				"dsznajder.es7-react-js-snippets"
+			],
+			"settings": {
+				"[typescriptreact]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+
+				},
+				"[typescript]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+				},
+				"editor.linkedEditing": true,
+				"editor.fontLigatures": true,
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.organizeImports": true
+				}
+			}
+		}
+		
+	},
+	"overrideCommand": true,
+	"remoteUser": "root"
+	// "remoteUser": "${localEnv:USER}"
+}

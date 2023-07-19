@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  uix:
+    build:
+      dockerfile: docker/sseui/Dockerfile
+      context: ../../
+      target: base
+
+    container_name: uix
+    ports:
+      - 5173:5173
+    volumes:
+      - ../:/workspace:cached
+      - node_modules:/workspace/node_modules
+    environment:
+      - DEVCONTAINER:true
+    
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+
+volumes:
+  node_modules:

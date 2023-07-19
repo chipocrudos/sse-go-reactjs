@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  server:
+    build:
+      dockerfile: docker/sseapi/Dockerfile
+      context: .
+      target: final
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+
+  uix:
+    build: 
+      dockerfile: docker/sseui/Dockerfile
+      context: .
+      target: final
+      args:
+        - VITE_SERVERAPI=http://localhost:8000
+        - VITE_APPID=SUPERSECRET
+    ports:
+      - 8080:80
